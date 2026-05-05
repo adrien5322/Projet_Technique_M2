@@ -9,3 +9,4 @@ Objectif :
 -Génération d'alerte
 -Création de rapport
 
+<img width="781" height="537" alt="photo" src="https://github.com/user-attachments/assets/0fe1c476-4545-4c6f-9b3c-3ac26fdbd608" />
