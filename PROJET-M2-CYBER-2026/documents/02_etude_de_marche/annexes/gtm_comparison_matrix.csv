@@ -1,0 +1,4 @@
+gtm_option,traction_speed,cac_efficiency,pipeline_quality,customer_control,execution_risk,weighted_score_100,recommendation
+GTM_A_Direct_SMB_ETI,3,3,4,5,3,72,secondary
+GTM_B_Partner_MSSP,4,4,3,2,3,68,secondary
+GTM_C_Hybrid,4,4,4,4,4,82,primary

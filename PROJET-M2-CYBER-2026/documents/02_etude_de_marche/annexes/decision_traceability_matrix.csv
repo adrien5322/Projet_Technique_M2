@@ -1,0 +1,11 @@
+source_or_input,market_fact,working_hypothesis,decision,downstream_document
+S01_S02,high cybersecurity incident and assistance volume in France,need for operational visibility is durable,prioritize France for first references,business_plan
+S21_S22,Belgium reports cyberattack notifications NIS2 notifications ransomware and DDoS,Belgium has compliance-driven demand,include Belgium in FR-BE-CHfr market scope,business_model
+S23_S24,Switzerland has high voluntary cyber reporting volume,Swiss francophone segment values trust and evidence,include Switzerland francophone with proof-focused messaging,business_model
+S05,NIS2 expands risk management and notification duties,proof and traceability are purchase drivers,make audit logs and CSV/JSON exports core MVP,cahier_des_charges
+S13,cyber talent recruitment and retention are difficult,solutions must reduce operational complexity,position DevinciWatch for teams with limited SOC capacity,feuille_de_cadrage
+S08_S09_S10,competitor pricing can be tiered by agents hosts or event volume,cost predictability is a differentiator,prefer annual B2B pricing and clear packaging,business_model
+benchmark_scorecard,enterprise tools are powerful but complex,avoid feature war against SIEM enterprise,focus positioning on pragmatic supervision and proof,cahier_des_charges
+tam_sam_som,ETI has strong value and fit balance,ETI can support higher ACV,make Professional plan core offer,business_model
+gtm_matrix,hybrid channel scores highest,need both learning and distribution,launch direct then scale partners,business_plan
+sensitivity_model,POC conversion CAC and churn drive economics,commercial execution must be measured,define KPI governance and POC criteria,business_plan

@@ -1,0 +1,23 @@
+source_id,source_name,tier,evidence_type,decision_use,review_frequency,owner
+S01,ANSSI Panorama cybermenace 2025,A,institutional_baseline,market_risk_and_sector_prioritization,annual,market_analysis
+S02,Cybermalveillance rapport 2025,A,institutional_baseline,demand_pressure_and_threat_mix,annual,market_analysis
+S03,WEF GCO 2025,B,executive_trends,macro_risk_narrative,annual,market_analysis
+S04,Mandiant M-Trends 2025,B,operational_incident_data,detection_response_assumptions,annual,product_security
+S05,EU NIS2 directive,A,regulatory,compliance_requirements,as_updated,compliance
+S06,EU SME Performance Review,A,macroeconomic,sam_som_inputs,annual,finance_strategy
+S08,Wazuh pricing,C,market_pricing,price_benchmark,quarterly,pricing
+S09,Datadog Cloud SIEM pricing,C,market_pricing,price_benchmark,quarterly,pricing
+S10,Datadog Workload pricing,C,market_pricing,price_benchmark,quarterly,pricing
+S12,ENISA NIS Investments,A,institutional_survey,capability_gap_and_budget_signal,annual,market_analysis
+S13,ENISA NIS Investments press release,A,institutional_survey,key_kpi_extracts,annual,market_analysis
+S14,ENISA NIS360,A,institutional_maturity,sector_priority_selection,annual,strategy
+S16,NIST CSF 2.0,A,standard_framework,control_model_and_governance,as_updated,compliance
+S17,Verizon DBIR,B,operational_incident_data,attack_pattern_context,annual,product_security
+S18,PwC DTI,C,c-suite_survey,investment_behavior_context,annual,strategy
+S19,IBM CODB,C,cost_benchmark,cost_of_incident_context,annual,finance_strategy
+S21,CCB Belgium key figures 2025,A,institutional_baseline,belgium_risk_signal_and_country_expansion,annual,market_analysis
+S22,CCB Belgium cyber reality 2025,A,institutional_incident_report,belgium_threat_mix_and_controls_priority,annual,market_analysis
+S23,NCSC Switzerland semi-annual 2025/1,A,institutional_incident_report,swiss_risk_signal_and_country_expansion,semi_annual,market_analysis
+S24,NCSC Switzerland semi-annual 2025/2,A,institutional_incident_report,swiss_risk_signal_and_country_expansion,semi_annual,market_analysis
+S25,NCSC Switzerland current figures,A,institutional_dashboard,incident_trend_monitoring,weekly,market_analysis
+S26,Statbel enterprises theme,A,official_statistics,belgium_company_segmentation_inputs,annual,finance_strategy

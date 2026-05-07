@@ -1,0 +1,4 @@
+year,opening_cash_eur,cash_in_revenue_eur,cash_out_cogs_eur,cash_out_opex_eur,other_out_capex_eur,net_cash_flow_eur,closing_cash_eur
+Y1,2400000,710000,198800,1120000,56000,-664800,1735200
+Y2,1735200,1480000,355200,1410000,70000,-355200,1380000
+Y3,1380000,2520000,529200,1780000,90000,120800,1500800

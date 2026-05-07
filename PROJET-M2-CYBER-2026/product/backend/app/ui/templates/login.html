@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Connexion - DAR-Cyber SOC{% endblock %}
+
+{% block login_content %}
+<div class="login-container">
+    <div class="login-card">
+        <h1>DAR-Cyber SOC</h1>
+        <div id="alert-container"></div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Se connecter</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const alertContainer = document.getElementById('alert-container');
+
+        try {
+            const response = await fetch('/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('access_token', data.access_token);
+                document.cookie = 'access_token=' + data.access_token + '; path=/; max-age=604800';
+                window.location.href = '/dashboard';
+            } else {
+                const error = await response.json();
+                const msg = Array.isArray(error.detail)
+                    ? error.detail.map(e => e.msg).join(', ')
+                    : (error.detail || 'Erreur de connexion');
+                alertContainer.innerHTML = `<div class="alert alert-error">${msg}</div>`;
+            }
+        } catch (error) {
+            alertContainer.innerHTML = `<div class="alert alert-error">Erreur de connexion au serveur</div>`;
+            console.error('Login error:', error);
+        }
+    });
+
+    // Check if already logged in
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
+    }
+    if (localStorage.getItem('access_token') || getCookie('access_token')) {
+        window.location.href = '/dashboard';
+    }
+</script>
+{% endblock %}

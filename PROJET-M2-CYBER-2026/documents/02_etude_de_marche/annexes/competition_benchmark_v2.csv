@@ -1,0 +1,10 @@
+cluster,player,model_pricing,price_reference,time_to_value,operational_complexity,fit_sme_eti,notes,source
+SIEM,Splunk,volume_or_contract,quote_based,medium,high,medium,pricing often custom,public pricing pages
+SIEM,Microsoft Sentinel,consumption,quote_calculator,medium,high,medium,ingestion-driven economics,public pricing pages
+SIEM,Elastic Security,subscription_or_usage,quote_or_plan,medium,high,medium,stack integration required,public pricing pages
+SIEM,Datadog Cloud SIEM,event_volume,5 USD per million events annual,fast,medium,medium,good UX but variable spend,https://www.datadoghq.com/pricing/?product=cloud-siem
+OpenSource,Wazuh Cloud,agent_tiers,571/923/1467 USD month tiers,medium,medium,high,predictable tiers for SMB,https://wazuh.com/cloud/
+OpenSource,Security Onion,self_hosted,license_low_ops_high,slow,high,medium,strong SOC stack but requires skills,project docs
+OpenSource,Suricata+Zeek,self_hosted,license_low_ops_high,slow,high,medium,powerful network telemetry but expert-heavy,project docs
+Endpoint,Datadog Workload Protection,host_based,15 USD host month annual,fast,medium,medium,host pricing easier than event-only,https://www.datadoghq.com/pricing/?product=workload-protection
+Service,MSSP regional,managed_service,retainer_plus_scope,fast,low,high,outsourcing speed with vendor dependence,market interviews pending

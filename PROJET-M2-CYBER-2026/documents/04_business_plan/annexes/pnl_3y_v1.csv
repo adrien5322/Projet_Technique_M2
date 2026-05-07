@@ -1,0 +1,4 @@
+year,recurring_revenue_eur,services_revenue_eur,total_revenue_eur,gross_margin_ratio,cogs_eur,gross_profit_eur,sales_marketing_opex_eur,product_rd_opex_eur,gna_opex_eur,total_opex_eur,ebitda_eur
+Y1,620000,90000,710000,0.72,198800,511200,540000,360000,220000,1120000,-608800
+Y2,1360000,120000,1480000,0.76,355200,1124800,720000,430000,260000,1410000,-285200
+Y3,2360000,160000,2520000,0.79,529200,1990800,940000,520000,320000,1780000,210800

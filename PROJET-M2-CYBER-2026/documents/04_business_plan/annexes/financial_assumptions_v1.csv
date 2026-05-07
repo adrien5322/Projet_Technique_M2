@@ -1,0 +1,17 @@
+category,assumption,value,unit,note
+Revenue,arr_eoy_y1,708000,EUR,aligned with accessible pricing business model
+Revenue,arr_eoy_y2,1685040,EUR,aligned with accessible pricing business model
+Revenue,arr_eoy_y3,3050536,EUR,aligned with accessible pricing business model
+Revenue,services_y1,90000,EUR,onboarding and setup
+Revenue,services_y2,120000,EUR,onboarding and setup
+Revenue,services_y3,160000,EUR,onboarding and setup
+Economics,gross_margin_y1,0.72,ratio,accessible pricing model
+Economics,gross_margin_y2,0.76,ratio,scale effect
+Economics,gross_margin_y3,0.79,ratio,scale and professional mix
+Economics,cac_avg,1800,EUR,lower CAC required by accessible pricing
+Economics,demo_or_poc_to_paid,0.28,ratio,base conversion target
+Economics,churn_y2,0.12,ratio,low-price mix churn risk
+Economics,churn_y3,0.10,ratio,retention improvement
+GoToMarket,mix_y1,75_25_direct_partner,,direct includes self-service and assisted sales
+GoToMarket,mix_y2,61_39_direct_partner,,partner ramp-up
+GoToMarket,mix_y3,46_54_direct_partner,,partner scale phase

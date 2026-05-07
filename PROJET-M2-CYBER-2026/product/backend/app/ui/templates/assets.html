@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Assets - DAR-Cyber SOC{% endblock %}
+
+{% block page_title %}Assets{% endblock %}
+
+{% block content %}
+<div id="error-container"></div>
+
+<div class="card">
+    <div class="card-header">Liste des Assets</div>
+    <div class="table-container">
+        <table id="assets-table">
+            <thead>
+                <tr>
+                    <th>Hostname</th>
+                    <th>IP</th>
+                    <th>Type</th>
+                    <th>OS</th>
+                    <th>Statut</th>
+                    <th>Dernier vu</th>
+                </tr>
+            </thead>
+            <tbody id="assets-body">
+                <tr><td colspan="6" class="loading">Chargement...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    async function loadAssets() {
+        const errorContainer = document.getElementById('error-container');
+        const tbody = document.getElementById('assets-body');
+
+        try {
+            const response = await apiRequest('/api/v1/assets');
+            const assets = response.items || response;
+
+            if (!assets || assets.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #888;">Aucun asset trouvé</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = assets.map(asset => `
+                <tr>
+                    <td>${asset.hostname || 'N/A'}</td>
+                    <td>${asset.ip_address || 'N/A'}</td>
+                    <td>${asset.asset_type || 'N/A'}</td>
+                    <td>${asset.os || 'N/A'}</td>
+                    <td>${asset.status || 'N/A'}</td>
+                    <td>${asset.last_seen ? formatDate(asset.last_seen) : 'N/A'}</td>
+                </tr>
+            `).join('');
+
+        } catch (error) {
+            errorContainer.innerHTML = `<div class="error">Erreur lors du chargement: ${error.message}</div>`;
+            tbody.innerHTML = '<tr><td colspan="6" class="error">Erreur de chargement</td></tr>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!getToken()) {
+            window.location.href = '/dashboard/login';
+            return;
+        }
+        loadAssets();
+    });
+</script>
+{% endblock %}

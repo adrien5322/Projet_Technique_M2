@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Attackers - DAR-Cyber SOC{% endblock %}
+
+{% block page_title %}Top IPs Attaquantes{% endblock %}
+
+{% block content %}
+<div id="error-container"></div>
+
+<div class="card">
+    <div class="card-header">Top IPs Attaquantes</div>
+    <div class="table-container">
+        <table id="attackers-table">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Événements</th>
+                    <th>Score de menace</th>
+                    <th>Types d'événements</th>
+                    <th>Dernier vu</th>
+                </tr>
+            </thead>
+            <tbody id="attackers-body">
+                <tr><td colspan="5" class="loading">Chargement...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    async function loadAttackers() {
+        const errorContainer = document.getElementById('error-container');
+        const tbody = document.getElementById('attackers-body');
+
+        try {
+            const attackers = await apiRequest('/api/v1/dashboard/attackers?limit=50');
+
+            if (!attackers || attackers.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #888;">Aucun attaquant détecté</td></tr>';
+                return;
+            }
+
+            // Sort by threat score (descending)
+            attackers.sort((a, b) => (b.threat_score || 0) - (a.threat_score || 0));
+
+            tbody.innerHTML = attackers.map(attacker => `
+                <tr>
+                    <td><strong>${attacker.source_ip}</strong></td>
+                    <td>${attacker.event_count}</td>
+                    <td>
+                        <span class="${getSeverityClass(attacker.threat_score >= 7 ? 'critical' : attacker.threat_score >= 4 ? 'high' : attacker.threat_score >= 2 ? 'medium' : 'low')}">
+                            ${attacker.threat_score ? attacker.threat_score.toFixed(2) : 'N/A'}
+                        </span>
+                    </td>
+                    <td>${attacker.event_types ? attacker.event_types.join(', ') : 'N/A'}</td>
+                    <td>${attacker.last_seen ? formatDate(attacker.last_seen) : 'N/A'}</td>
+                </tr>
+            `).join('');
+
+        } catch (error) {
+            errorContainer.innerHTML = `<div class="error">Erreur lors du chargement: ${error.message}</div>`;
+            tbody.innerHTML = '<tr><td colspan="5" class="error">Erreur de chargement</td></tr>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!getToken()) {
+            window.location.href = '/dashboard/login';
+            return;
+        }
+        loadAttackers();
+    });
+</script>
+{% endblock %}

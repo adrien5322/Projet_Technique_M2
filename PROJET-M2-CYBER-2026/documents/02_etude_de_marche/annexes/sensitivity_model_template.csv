@@ -1,0 +1,7 @@
+variable,base_value,low_case,high_case,impact_on_arr,impact_on_margin,alert_threshold
+acv_eur,5900,3000,7800,very_high,high,<4500
+demo_or_poc_to_paid_rate,0.28,0.18,0.35,very_high,high,<0.20
+cac_eur,1800,1500,2500,medium,high,>2500
+annual_churn_rate,0.12,0.08,0.18,very_high,very_high,>0.15
+professional_enterprise_mix,0.40,0.30,0.55,high,very_high,<0.35
+support_cost_per_client_eur,700,450,1200,medium,high,>1000

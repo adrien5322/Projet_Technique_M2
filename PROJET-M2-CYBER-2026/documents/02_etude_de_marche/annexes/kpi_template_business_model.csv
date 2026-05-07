@@ -1,0 +1,18 @@
+category,kpi,definition,formula,unit,baseline,target_q4_2026,target_q4_2027,source_or_method
+GoToMarket,MQL_to_SQL,Leads qualifies ventes / leads marketing,MQL_to_SQL=SQL/MQL,%,,, ,CRM
+GoToMarket,SQL_to_Demo_or_POC,Opportunites converties en demonstration ou POC,SQL_to_Demo_or_POC=(Demo_or_POC)/SQL,%,,, ,CRM
+GoToMarket,Demo_or_POC_to_Paid,Demonstrations ou POC convertis en abonnements,Demo_or_POC_to_Paid=Deals_signes/(Demo_or_POC),%,,, ,CRM
+GoToMarket,Sales_Cycle,Jours entre 1er contact et signature,Date_signature-Date_1er_contact,jours,,, ,CRM
+UnitEconomics,CAC,Cout d'acquisition client complet,CAC=cout_marketing_ventes/nouveaux_clients,EUR,,, ,Finance
+UnitEconomics,ACV,Valeur annuelle moyenne par contrat,ACV=ARR_nouveau/nb_nouveaux_contrats,EUR/an,,, ,Finance
+UnitEconomics,Gross_Margin,Marge brute apres couts directs,Gross_Margin=(revenu-COGS)/revenu,%,,, ,Finance
+UnitEconomics,CAC_Payback,Temps de retour CAC,CAC_Payback=CAC/marge_brute_mensuelle,mois,,, ,Finance
+UnitEconomics,LTV_CAC,Rentabilite acquisition,LTV_CAC=LTV/CAC,ratio,,, ,Finance
+Retention,Logo_Churn,Perte clients,Logo_Churn=clients_perdus/clients_debut_periode,%,,, ,Finance
+Retention,Revenue_Churn,Perte revenu recurrent,Rev_Churn=ARR_perdu/ARR_debut_periode,%,,, ,Finance
+Pricing,Professional_Enterprise_Mix,Part des clients sur Professional ou Enterprise,Professional_Enterprise_Mix=(clients_professional+clients_enterprise)/clients_total,%,,, ,Billing
+ProductSecurity,MTTD,Temps moyen de detection,MTTD=avg(date_detection-date_debut_incident),heures,,, ,SOC reporting
+ProductSecurity,MTTR,Temps moyen de reponse,MTTR=avg(date_resolution-date_detection),heures,,, ,SOC reporting
+ProductSecurity,False_Positive_Rate,Part des alertes non pertinentes,FPR=faux_positifs/alertes_totales,%,,, ,SOC reporting
+ProductSecurity,Asset_Coverage,Couverture de supervision actifs,Coverage=actifs_monitores/actifs_totaux,%,,, ,CMDB+outil
+Compliance,Report_Time,Temps production dossier incident,avg(temps_generation_rapport),minutes,,, ,Ops

@@ -1,0 +1,13 @@
+assumption_id,topic,value,source_ids,confidence,impact,justification,used_in
+A01,geographic_scope,France_Belgique_Suisse_francophone,S01;S02;S21;S23;S24,high,high,strong public cyber evidence and francophone access,rendu_principal;tam_sam_som
+A02,target_segments,PME_ETI_secteurs_sensibles,S06;S14;S26,medium,high,need plus ability to pay plus compliance pressure,segmentation;business_model
+A03,pme_t_need,0.22,S02;S06;S13;S17,medium,medium,need exists but maturity and budget are uneven,tam_sam_som
+A04,eti_t_need,0.35,S13;S14;S17,medium,high,higher exposure and more structured IT,tam_sam_som
+A05,sensitive_t_need,0.42,S05;S14;S21;S23,medium,high,compliance and continuity needs stronger,tam_sam_som
+A06,pme_acv_capacity,9000,S08;S09;S10,medium,medium,market capacity reference above public entry pricing,tam_sam_som
+A07,eti_acv_capacity,24000,S08;S09;S10;BM_pricing,medium,high,upper willingness to pay supports enterprise custom offer,tam_sam_som;business_model
+A08,gtm_hybrid_score,80,gtm_weighted_decision_matrix,medium,high,best balance between learning and distribution,gtm;business_plan
+A09,demo_or_poc_to_paid_reference,0.28,kpi_template;business_model,medium,very_high,critical conversion assumption after accessible pricing and qualified demo,business_model;business_plan
+A10,cac_reference,1800,kpi_template;business_model,medium,high,accessible pricing requires low CAC and repeatable acquisition,business_model;business_plan
+A11,churn_reference,0.12,kpi_template;business_model,medium,high,retention risk higher with low-price plans,business_model;business_plan
+A12,proof_value,CSV_JSON_exports,S05;S16;S20,high,high,compliance and governance require traceability,cahier_des_charges;business_model

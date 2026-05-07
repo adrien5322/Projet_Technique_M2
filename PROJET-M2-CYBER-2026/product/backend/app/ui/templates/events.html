@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Events - DAR-Cyber SOC{% endblock %}
+
+{% block page_title %}Events{% endblock %}
+
+{% block content %}
+<div id="error-container"></div>
+
+<div class="card">
+    <div class="card-header">Liste des Events</div>
+
+    <!-- Filters -->
+    <div class="filters">
+        <select id="severity-filter" class="filter-select" onchange="loadEvents()">
+            <option value="">Toutes les sévérités</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="critical">Critical</option>
+        </select>
+        <select id="limit-filter" class="filter-select" onchange="loadEvents()">
+            <option value="50">50 résultats</option>
+            <option value="100">100 résultats</option>
+            <option value="200">200 résultats</option>
+        </select>
+    </div>
+
+    <div class="table-container">
+        <table id="events-table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>IP Source</th>
+                    <th>Type</th>
+                    <th>Sévérité</th>
+                    <th>Asset</th>
+                </tr>
+            </thead>
+            <tbody id="events-body">
+                <tr><td colspan="5" class="loading">Chargement...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    async function loadEvents() {
+        const errorContainer = document.getElementById('error-container');
+        const tbody = document.getElementById('events-body');
+
+        const severity = document.getElementById('severity-filter').value;
+        const limit = document.getElementById('limit-filter').value;
+
+        let url = `/api/v1/events?limit=${limit}`;
+        if (severity) {
+            url += `&severity=${severity}`;
+        }
+
+        try {
+            const response = await apiRequest(url);
+            const events = response.events || response.items || response;
+
+            if (!events || events.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #888;">Aucun événement trouvé</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = events.map(event => `
+                <tr>
+                    <td>${event.timestamp ? formatDate(event.timestamp) : 'N/A'}</td>
+                    <td>${event.source_ip || 'N/A'}</td>
+                    <td>${event.event_type || 'N/A'}</td>
+                    <td><span class="${getSeverityClass(event.severity)}">${event.severity}</span></td>
+                    <td>${event.asset_hostname || event.asset_id || 'N/A'}</td>
+                </tr>
+            `).join('');
+
+        } catch (error) {
+            errorContainer.innerHTML = `<div class="error">Erreur lors du chargement: ${error.message}</div>`;
+            tbody.innerHTML = '<tr><td colspan="5" class="error">Erreur de chargement</td></tr>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!getToken()) {
+            window.location.href = '/dashboard/login';
+            return;
+        }
+        loadEvents();
+    });
+</script>
+{% endblock %}
