@@ -1,0 +1,7 @@
+risk_id,risk,owner,warning_threshold,critical_threshold,mitigation_plan,review_cadence
+R1,Demo_or_POC_to_Paid_drop,Sales_Lead,0.22,0.20,improve_qualification_and_demo_value_proof,monthly
+R2,CAC_drift,Head_of_GTM,2200,2500,reallocate_channels_and_optimize_self_service_conversion,monthly
+R3,Churn_increase,Customer_Success,0.13,0.15,activate_90d_adoption_and_product_usage_reviews,monthly
+R4,Gross_margin_drop,Finance_Ops,0.70,0.68,reduce_support_cost_and_standardize_delivery,monthly
+R5,Runway_tension,CEO_Finance,10_months,9_months,burn_control_and_revenue_prioritization,monthly
+R6,Starter_cannibalization,Leadership,0.45_starter_mix,0.55_starter_mix,improve_upgrade_paths_and_professional_packaging,monthly

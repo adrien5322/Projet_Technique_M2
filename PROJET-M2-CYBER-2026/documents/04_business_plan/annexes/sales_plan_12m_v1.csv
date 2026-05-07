@@ -1,0 +1,13 @@
+month,mql_target,sql_target,demo_or_poc_target,new_customers_target,new_arr_eur,channel_focus
+M1,180,45,13,6,35400,direct
+M2,195,50,14,7,41300,direct
+M3,210,55,15,8,47200,direct
+M4,230,62,17,8,47200,direct
+M5,250,70,19,9,53100,hybrid
+M6,270,78,21,9,53100,hybrid
+M7,295,86,24,10,59000,hybrid
+M8,320,94,26,11,64900,hybrid
+M9,345,103,29,12,70800,partner
+M10,370,111,31,13,76700,partner
+M11,395,119,33,13,76700,partner
+M12,420,126,35,14,82600,partner

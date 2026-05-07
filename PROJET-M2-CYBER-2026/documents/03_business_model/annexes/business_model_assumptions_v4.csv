@@ -1,0 +1,18 @@
+category,assumption_name,value,unit,confidence_level,notes
+Scope,geography,FR_BE_CHfr,,medium,focus initial go-to-market
+Scope,segment_core,PME_ETI_50_1000,,medium,priority segment with accessible pricing
+Pricing,starter_monthly,20,EUR_per_month,high,public entry plan
+Pricing,essential_monthly,200,EUR_per_month,high,public first operational plan
+Pricing,professional_monthly,740,EUR_per_month,high,public core plan
+Pricing,enterprise_reference,18000,EUR_per_year,medium,custom quote reference for modeling
+Economics,acv_avg,5900,EUR_per_year,medium,blended plans addons and enterprise reference
+Economics,demo_or_poc_to_paid,0.28,ratio,medium,target with accessible pricing and qualification
+Economics,cac_avg,1800,EUR_per_customer,medium,lower than enterprise-led motion due accessible pricing and hybrid acquisition
+Economics,churn_logo_y2,0.12,ratio,medium,higher than old model because low-price plans churn more
+Economics,churn_logo_y3,0.10,ratio,medium,retention improves with onboarding and professional mix
+Economics,gross_margin_y1,0.72,ratio,medium,self-service and lighter onboarding improve margin
+Economics,gross_margin_y2,0.76,ratio,medium,scale effect
+Economics,gross_margin_y3,0.79,ratio,medium,scale and process maturity
+Channel,new_logo_mix_y1,75_25_direct_partner,,medium,direct includes self-service and assisted sales
+Channel,new_logo_mix_y2,61_39_direct_partner,,medium,partner ramp-up
+Channel,new_logo_mix_y3,46_54_direct_partner,,medium,partner scale phase

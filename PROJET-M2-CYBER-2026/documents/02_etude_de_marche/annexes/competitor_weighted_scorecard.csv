@@ -1,0 +1,6 @@
+player_or_family,cost_predictability_20,ease_of_operation_25,coverage_20,time_to_value_15,proof_reporting_20,weighted_score_100,interpretation
+SIEM_XDR_enterprise,2,2,5,3,4,62,powerful_but_complex_for_pme_eti
+Open_source_SOC_stack,4,2,4,2,3,59,license_cost_low_but_ops_cost_high
+EDR_NDR_specialized,3,3,3,4,3,63,strong_axis_but_partial_visibility
+MSSP_SOC_externalized,3,4,4,4,3,72,fast_but_vendor_dependence
+DevinciWatch_target_position,4,4,3,4,5,80,best_fit_if_product_stays_focused_on_proof_and_simplicity

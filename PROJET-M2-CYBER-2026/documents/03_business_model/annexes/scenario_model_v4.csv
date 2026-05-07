@@ -1,0 +1,4 @@
+scenario,acv_avg_eur,cac_avg_eur,demo_or_poc_to_paid,churn_y2,gross_margin_y1,payback_months_est,arr_y1_eur,arr_y2_eur,arr_y3_eur,notes
+prudent,3000,2200,0.18,0.18,0.68,10.8,360000,885000,1550000,starter_and_essential_heavy_mix_with_slower_conversion
+base,5900,1800,0.28,0.12,0.72,4.8,708000,1685040,3050536,recommended_accessible_pricing_scenario
+ambitieux,7800,1500,0.35,0.08,0.82,2.8,1170000,2850000,5300000,strong_professional_enterprise_mix_and_partner_acceleration

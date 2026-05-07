@@ -1,0 +1,9 @@
+item_type,item_name,monthly_price_eur,annual_price_eur,target_segment,attach_rate,notes
+plan,Starter,20,240,lab_very_small_structure_test,0.25,public entry plan and adoption funnel
+plan,Essential,200,2400,PME_mono_site,0.35,first operational plan for small organizations
+plan,Professional,740,8880,PME_mature_ETI_light_sensitive,0.30,core economic plan
+plan,Enterprise,custom,18000,ETI_complex_governance,0.10,reference value for modeling only
+addon,Support_Premium,100,1200,essential_professional_enterprise,0.30,faster support and assisted operations
+addon,Retention_Longue,75,900,professional_enterprise,0.25,extended evidence retention
+service,Onboarding_Standard,,800,essential_professional,,non-recurring setup package
+service,Onboarding_Avance,,2500,professional_enterprise,,non-recurring complex setup

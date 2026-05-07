@@ -1,0 +1,10 @@
+family,provider,pricing_model,public_reference,pricing_signal,complexity_risk,devinciwatch_implication
+SIEM,Splunk,contract_or_ingestion_based,https://www.splunk.com/en_us/products/pricing.html,quote_or_workload_dependent,high,avoid_unclear_cost_growth
+SIEM,Microsoft_Sentinel,usage_consumption,https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/,ingestion_and_retention_driven,medium_high,emphasize_budget_predictability
+SIEM,Elastic_Security,subscription_tiers,https://www.elastic.co/pricing/,tier_and_stack_dependent,medium,keep_packaging_simple
+SIEM,Datadog_Cloud_SIEM,event_volume,https://www.datadoghq.com/pricing/?product=cloud-siem,5_USD_per_million_events_month_annual,medium,position_against_event_volume_uncertainty
+Endpoint,Datadog_Workload_Protection,host_based,https://www.datadoghq.com/pricing/?product=workload-protection,15_USD_host_month_annual,medium,compare_with_host_based_predictability
+OpenSource,Wazuh_Cloud,agent_tiers,https://wazuh.com/cloud/,571_923_1467_USD_month_tiers,medium,use_as_lower_price_reference_not_full_TCO
+OpenSource,Security_Onion,self_hosted,https://docs.securityonion.net/,license_low_ops_high,high,highlight_hidden_operational_cost
+OpenSource,Suricata_Zeek,self_hosted,https://suricata.io/documentation/;https://docs.zeek.org/,tooling_powerful_expert_required,high,emphasize_simplicity_and_packaged_value
+Service,MSSP_regional,managed_service,market_observation,retainer_scope_based,medium,partner_channel_possible_but_control_lower

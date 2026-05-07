@@ -1,0 +1,13 @@
+scenario,segment,n_org_estimated,t_need,t_fit,t_access,acv_eur,sam_eur,som_eur,interpretation
+prudent,PME_50_249,120000,0.18,0.26,0.010,8000,44928000,449280,slower_access_lower_price
+prudent,ETI_250_1000,18000,0.30,0.40,0.015,21000,45360000,680400,slower_access_lower_price
+prudent,Secteurs_sensibles,14000,0.36,0.36,0.012,15000,27216000,326592,slower_public_sector_conversion
+prudent,TOTAL,152000,,,,,117504000,1456272,downside_case
+central,PME_50_249,120000,0.22,0.32,0.018,9000,76032000,1368576,current_reference_case
+central,ETI_250_1000,18000,0.35,0.48,0.025,24000,72576000,1814400,current_reference_case
+central,Secteurs_sensibles,14000,0.42,0.44,0.022,18000,46569600,1024531,current_reference_case
+central,TOTAL,152000,,,,,195177600,4207507,reference_case
+ambitieux,PME_50_249,120000,0.26,0.38,0.030,12000,142272000,4268160,stronger_access_and_pricing
+ambitieux,ETI_250_1000,18000,0.42,0.55,0.040,28000,116424000,4656960,stronger_partner_channel
+ambitieux,Secteurs_sensibles,14000,0.48,0.50,0.035,22000,73920000,2587200,stronger_compliance_pull
+ambitieux,TOTAL,152000,,,,,332616000,11512320,upside_case

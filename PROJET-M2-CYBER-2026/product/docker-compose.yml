@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  # Backend FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: devinciwatch-backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    ports:
+      - "${PORT:-8000}:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-devinciwatch}:${POSTGRES_PASSWORD:-devinciwatch}@postgres:5432/${POSTGRES_DB:-devinciwatch}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - devinciwatch-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: devinciwatch-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-devinciwatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devinciwatch}
+      POSTGRES_DB: ${POSTGRES_DB:-devinciwatch}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - devinciwatch-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-devinciwatch}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Redis Cache & Message Broker
+  redis:
+    image: redis:7-alpine
+    container_name: devinciwatch-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - devinciwatch-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Worker Celery (optionnel pour plus tard)
+  # worker:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: devinciwatch-worker
+  #   command: celery -A app.core.celery_app worker -l info
+  #   volumes:
+  #     - ./backend:/app
+  #   env_file:
+  #     - ./backend/.env
+  #   environment:
+  #     - DATABASE_URL=postgresql://${POSTGRES_USER:-devinciwatch}:${POSTGRES_PASSWORD:-devinciwatch}@postgres:5432/${POSTGRES_DB:-devinciwatch}
+  #     - REDIS_URL=redis://redis:6379/0
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #     - backend
+  #   networks:
+  #     - devinciwatch-network
+  #   restart: unless-stopped
+
+networks:
+  devinciwatch-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:

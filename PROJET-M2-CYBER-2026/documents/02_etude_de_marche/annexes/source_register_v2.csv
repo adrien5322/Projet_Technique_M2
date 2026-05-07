@@ -1,0 +1,29 @@
+id,theme,metric_or_fact,value,year,source_url,confidence,notes
+S01,France menace cyber,Evenements securite traites,3586,2025,https://cyber.gouv.fr/actualites/panorama-de-la-cybermenace-2025/,high,ANSSI baseline
+S02,France assistance cyber,Victimes assistees,500000+,2025,https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/rapport-activite-2025,high,Cybermalveillance baseline
+S03,Monde resilience cyber,Global Cybersecurity Outlook,digest,2025,https://www.weforum.org/publications/global-cybersecurity-outlook-2025/digest/,medium,macro executive trends
+S04,Operations IR,Dwell time median global,11 jours,2024,https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2025,medium,Mandiant operational signal
+S05,Reglementaire UE,NIS2 secteurs critiques couverts,18,2026,https://digital-strategy.ec.europa.eu/en/policies/nis2-directive,high,regulatory baseline
+S06,Macro PME UE,SME performance review,official,2025,https://single-market-economy.ec.europa.eu/smes/sme-strategy-and-sme-friendly-business-conditions/sme-performance-review_en,high,macro SME sizing
+S08,Benchmark prix,Wazuh Cloud pricing,public tiers,2026,https://wazuh.com/cloud/,medium,pricing benchmark
+S09,Benchmark prix,Datadog Cloud SIEM,5 USD per million events/month annual,2026,https://www.datadoghq.com/pricing/?product=cloud-siem,medium,pricing benchmark
+S10,Benchmark prix,Datadog Workload Protection,15 USD host/month annual,2026,https://www.datadoghq.com/pricing/?product=workload-protection,medium,pricing benchmark
+S13,UE investissement cyber,Difficulte recrutement talent cyber,76%,2025,https://www.enisa.europa.eu/news/whats-driving-cybersecurity-investments-and-where-lie-the-challenges,high,ENISA investment signal
+S14,UE maturite sectorielle,NIS360 maturity signals,report,2024,https://www.enisa.europa.eu/news/enisa-nis360-2024-report,high,sector prioritization
+S16,Reference gouvernance,Cybersecurity Framework 2.0,standard,2026,https://www.nist.gov/cyberframework,high,governance framework
+S17,Operations breach,Verizon DBIR,report,2025,https://www.verizon.com/business/resources/reports/dbir/,medium,attack pattern benchmark
+S18,Strategie cyber,Digital Trust Insights,report,2026,https://www.pwc.com/gx/en/issues/cybersecurity/global-digital-trust-insights.html,medium,investment context
+S19,Cout incident global,Cost of Data Breach,report,2025,https://www.ibm.com/reports/data-breach,medium,cost context
+S20,Gouvernance digitale,Digital security risk management,policy,2026,https://www.oecd.org/digital/digital-security/,high,policy framework
+S21,Belgique menace cyber,CCB key figures,official,2025,https://ccb.belgium.be/en,high,Belgium institutional baseline
+S22,Belgique evolution incidents,Incidents cyber variation,+58%,2025,https://ccb.belgium.be/fr/news/plus-dattaques-plus-de-signalements-la-realite-cyber-de-la-belgique-en-2025,high,Belgium cyber reality
+S23,Suisse menace cyber,Signalements cyberincidents,35727,2025,https://www.ncsc.admin.ch/ncsc/fr/home/dokumentation/berichte/lageberichte/halbjahresbericht-2025-1.html,high,Swiss institutional baseline
+S24,Suisse menace cyber,Signalements volontaires,29006,2025,https://www.ncsc.admin.ch/ncsc/fr/home/dokumentation/berichte/lageberichte/halbjahresbericht-2025-2.html,high,Swiss institutional baseline
+S25,Suisse capacite institutionnelle,Current figures dashboard,weekly,2026,https://www.ncsc.admin.ch/ncsc/fr/home/aktuell/aktuelle-zahlen.html,high,trend monitoring
+S26,Belgique base entreprises,Statbel enterprises theme,official,2026,https://statbel.fgov.be/en/themes/enterprises,high,Belgium segmentation proxy
+S27,Benchmark prix,Microsoft Sentinel pricing,public,2026,https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/,medium,pricing benchmark
+S28,Benchmark prix,Elastic pricing,public,2026,https://www.elastic.co/pricing/,medium,pricing benchmark
+S29,Benchmark prix,Splunk pricing,public,2026,https://www.splunk.com/en_us/products/pricing.html,medium,pricing benchmark
+S30,Open source SOC,Security Onion documentation,docs,2026,https://docs.securityonion.net/,medium,operational complexity benchmark
+S31,Open source IDS,Suricata documentation,docs,2026,https://suricata.io/documentation/,medium,technical alternative benchmark
+S32,Open source network security,Zeek documentation,docs,2026,https://docs.zeek.org/,medium,technical alternative benchmark

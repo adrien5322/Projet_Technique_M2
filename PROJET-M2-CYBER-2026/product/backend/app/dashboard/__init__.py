@@ -1,0 +1,5 @@
+"""Dashboard module for SOC dashboard and visualization."""
+
+from app.dashboard.routes import router as dashboard_router
+
+__all__ = ["dashboard_router"]

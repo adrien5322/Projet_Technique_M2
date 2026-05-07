@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Alertes - DAR-Cyber SOC{% endblock %}
+
+{% block page_title %}Alertes{% endblock %}
+
+{% block content %}
+<div id="error-container"></div>
+
+<div class="card">
+    <div class="card-header">Liste des Alertes</div>
+    <div class="table-container">
+        <table id="alerts-table">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Sévérité</th>
+                    <th>Statut</th>
+                    <th>Assigné à</th>
+                    <th>Créé le</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="alerts-body">
+                <tr><td colspan="6" class="loading">Chargement...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const statusOptions = ['open', 'investigating', 'resolved', 'false_positive'];
+
+    async function loadAlerts() {
+        const errorContainer = document.getElementById('error-container');
+        const tbody = document.getElementById('alerts-body');
+
+        try {
+            const response = await apiRequest('/api/v1/alerts');
+            const alerts = response.items || response;
+
+            if (!alerts || alerts.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #888;">Aucune alerte trouvée</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = alerts.map(alert => `
+                <tr>
+                    <td>${alert.title || 'N/A'}</td>
+                    <td><span class="${getSeverityClass(alert.severity)}">${alert.severity}</span></td>
+                    <td><span class="${getStatusClass(alert.status)}">${alert.status}</span></td>
+                    <td>${alert.assigned_to || 'Non assigné'}</td>
+                    <td>${alert.created_at ? formatDate(alert.created_at) : 'N/A'}</td>
+                    <td>
+                        <select class="filter-select btn-sm" onchange="updateAlertStatus(${alert.id}, this.value)" style="padding: 4px;">
+                            ${statusOptions.map(s =>
+                                `<option value="${s}" ${alert.status === s ? 'selected' : ''}>${s}</option>`
+                            ).join('')}
+                        </select>
+                    </td>
+                </tr>
+            `).join('');
+
+        } catch (error) {
+            errorContainer.innerHTML = `<div class="error">Erreur lors du chargement: ${error.message}</div>`;
+            tbody.innerHTML = '<tr><td colspan="6" class="error">Erreur de chargement</td></tr>';
+        }
+    }
+
+    async function updateAlertStatus(alertId, newStatus) {
+        try {
+            const response = await apiRequest(`/api/v1/alerts/${alertId}`, {
+                method: 'PATCH',
+                body: JSON.stringify({ status: newStatus })
+            });
+
+            if (response) {
+                // Reload alerts to reflect changes
+                loadAlerts();
+            }
+        } catch (error) {
+            document.getElementById('error-container').innerHTML =
+                `<div class="error">Erreur lors de la mise à jour: ${error.message}</div>`;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!getToken()) {
+            window.location.href = '/dashboard/login';
+            return;
+        }
+        loadAlerts();
+    });
+</script>
+{% endblock %}

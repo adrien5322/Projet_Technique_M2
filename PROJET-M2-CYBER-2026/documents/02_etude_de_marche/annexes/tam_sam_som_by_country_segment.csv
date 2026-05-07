@@ -1,0 +1,11 @@
+country,segment,n_org_estimated,t_need,t_fit,t_access,acv_eur,sam_eur,som_eur,source_basis,assumption_note
+France,PME_50_249,103000,0.22,0.32,0.018,9000,65260800,1174694,EU_SME_review_INSEE_proxy,segment split calibrated to consolidated FR-BE-CHfr model
+Belgique,PME_50_249,10000,0.22,0.32,0.018,9000,6336000,114048,Statbel_EU_SME_review,segment split calibrated to consolidated FR-BE-CHfr model
+Suisse_francophone,PME_50_249,7000,0.22,0.32,0.018,9000,4435200,79834,OFS_proxy_language_scope,segment split calibrated to consolidated FR-BE-CHfr model
+France,ETI_250_1000,12000,0.35,0.48,0.025,24000,48384000,1209600,EU_SME_review_INSEE_proxy,ETI strongest value and fit segment
+Belgique,ETI_250_1000,1800,0.35,0.48,0.025,24000,7257600,181440,Statbel_EU_SME_review,ETI strongest value and fit segment
+Suisse_francophone,ETI_250_1000,4200,0.35,0.48,0.025,24000,16934400,423360,OFS_proxy_language_scope,ETI strongest value and fit segment
+France,Secteurs_sensibles,9000,0.42,0.44,0.022,18000,29937600,658627,NIS2_sector_proxy,health_education_public_local_digital_services
+Belgique,Secteurs_sensibles,1600,0.42,0.44,0.022,18000,5322240,117089,NIS2_CCB_Statbel_proxy,health_education_public_local_digital_services
+Suisse_francophone,Secteurs_sensibles,3400,0.42,0.44,0.022,18000,11309760,248815,NCSC_sector_proxy,health_education_public_local_digital_services
+TOTAL,ALL,152000,,,,,195177600,4207507,computed,consistent with consolidated v2 model

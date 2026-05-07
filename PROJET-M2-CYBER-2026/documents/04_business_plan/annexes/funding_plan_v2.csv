@@ -1,0 +1,4 @@
+phase,period,budget_total_eur,sales_marketing_pct,delivery_support_pct,product_platform_pct,gna_reserve_pct,gate_condition
+Phase_1,M1_M6,900000,45,25,20,10,Demo_or_POC_to_Paid_at_or_above_0.24
+Phase_2,M7_M12,900000,38,25,27,10,CAC_below_or_equal_2200
+Phase_3,M13_M18,600000,35,25,30,10,Churn_below_or_equal_0.12_and_professional_enterprise_mix_above_0.40

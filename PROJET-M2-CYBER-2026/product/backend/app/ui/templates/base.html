@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DAR-Cyber SOC{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f1923;
+            color: #e0e0e0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #1a2a3a;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #00bcd4;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #2a3a4a;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h1 {
+            color: #00bcd4;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 12px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #2a3a4a;
+            border-left-color: #00bcd4;
+            color: #00bcd4;
+        }
+
+        .sidebar-nav a.active {
+            background-color: #2a3a4a;
+            border-left-color: #00bcd4;
+            color: #00bcd4;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1a2a3a;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2a3a4a;
+        }
+
+        .header h2 {
+            color: #00bcd4;
+            font-size: 1.3rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            color: #e0e0e0;
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Content area */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* Cards */
+        .card {
+            background-color: #1a2a3a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #2a3a4a;
+        }
+
+        .card-header {
+            color: #00bcd4;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #2a3a4a;
+            padding-bottom: 10px;
+        }
+
+        /* Metrics grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background-color: #1a2a3a;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #2a3a4a;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00bcd4;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a2a3a;
+        }
+
+        th {
+            background-color: #2a3a4a;
+            color: #00bcd4;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #2a3a4a;
+        }
+
+        tr:hover {
+            background-color: #2a3a4a;
+        }
+
+        /* Severity badges */
+        .severity {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .severity-low { background-color: #4caf50; color: white; }
+        .severity-medium { background-color: #ff9800; color: white; }
+        .severity-high { background-color: #f44336; color: white; }
+        .severity-critical { background-color: #9c27b0; color: white; }
+
+        /* Status badges */
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-open { background-color: #ff9800; color: white; }
+        .status-investigating { background-color: #2196f3; color: white; }
+        .status-resolved { background-color: #4caf50; color: white; }
+        .status-false_positive { background-color: #9e9e9e; color: white; }
+
+        /* Buttons */
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0097a7;
+        }
+
+        .btn-sm {
+            padding: 4px 8px;
+            font-size: 0.8rem;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            background-color: #2a3a4a;
+            color: #e0e0e0;
+            border: 1px solid #3a4a5a;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        /* Error */
+        .error {
+            background-color: #f44336;
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* Chart container */
+        .chart-container {
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        /* Bar chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 250px;
+            gap: 5px;
+            padding: 20px 0;
+            border-bottom: 1px solid #2a3a4a;
+        }
+
+        .bar {
+            flex: 1;
+            background-color: #00bcd4;
+            min-height: 5px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .bar:hover {
+            background-color: #0097a7;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #00bcd4;
+        }
+
+        /* Login page specific */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f1923;
+        }
+
+        .login-card {
+            background-color: #1a2a3a;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #2a3a4a;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-card h1 {
+            color: #00bcd4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a3a4a;
+            border: 1px solid #3a4a5a;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00bcd4;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0097a7;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .alert-error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .alert-success {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% if user %}
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>DAR-Cyber</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/dashboard" {% if request.url.path == '/dashboard' %}class="active"{% endif %}>Dashboard</a>
+            <a href="/dashboard/assets" {% if request.url.path == '/dashboard/assets' %}class="active"{% endif %}>Assets</a>
+            <a href="/dashboard/events" {% if request.url.path == '/dashboard/events' %}class="active"{% endif %}>Events</a>
+            <a href="/dashboard/alerts" {% if request.url.path == '/dashboard/alerts' %}class="active"{% endif %}>Alerts</a>
+            <a href="/dashboard/attackers" {% if request.url.path == '/dashboard/attackers' %}class="active"{% endif %}>Attackers</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h2>{% block page_title %}Dashboard{% endblock %}</h2>
+            <div class="header-right">
+                <span class="user-info">{{ user.username }} ({{ user.role }})</span>
+                <button class="logout-btn" onclick="logout()">Déconnexion</button>
+            </div>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% else %}
+    {% block login_content %}{% endblock %}
+    {% endif %}
+
+    <script>
+        // Sync localStorage token to cookie (for server-side auth)
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+        (function syncTokenToCookie() {
+            const token = localStorage.getItem('access_token');
+            if (token && !getCookie('access_token')) {
+                document.cookie = 'access_token=' + token + '; path=/; max-age=604800';
+            }
+        })();
+
+        // Get JWT token from localStorage
+        function getToken() {
+            return localStorage.getItem('access_token');
+        }
+
+        // API request helper
+        async function apiRequest(url, options = {}) {
+            const token = getToken();
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    headers
+                });
+
+                if (response.status === 401) {
+                    // Token expired or invalid
+                    localStorage.removeItem('access_token');
+                    window.location.href = '/dashboard/login';
+                    return null;
+                }
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('API Request failed:', error);
+                throw error;
+            }
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('access_token');
+            document.cookie = 'access_token=; path=/; max-age=0';
+            window.location.href = '/dashboard/login';
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('fr-FR');
+        }
+
+        // Get severity class
+        function getSeverityClass(severity) {
+            return `severity severity-${severity}`;
+        }
+
+        // Get status class
+        function getStatusClass(status) {
+            return `status status-${status}`;
+        }
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

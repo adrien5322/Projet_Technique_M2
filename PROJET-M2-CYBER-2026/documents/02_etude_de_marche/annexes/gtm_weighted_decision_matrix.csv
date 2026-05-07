@@ -1,0 +1,4 @@
+gtm_option,traction_speed_20,cac_efficiency_25,pipeline_quality_20,customer_control_20,execution_risk_15,weighted_score_100,decision_rationale
+GTM_A_Direct,3,3,4,5,3,72,strong_learning_but_slower_scale
+GTM_B_Partner,4,4,3,2,3,68,faster_reach_but_less_customer_control
+GTM_C_Hybrid,4,4,4,4,4,80,best_balance_between_learning_distribution_and_risk
